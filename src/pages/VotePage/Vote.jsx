@@ -18,10 +18,8 @@ import CircularProgress from "@mui/material/CircularProgress";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
-import { Typography, TextField, Box, Button, Snackbar } from "@mui/material";
+import { Typography, TextField, Box } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import IconButton from "@mui/material/IconButton";
-import CloseIcon from "@mui/icons-material/Close";
 
 const Vote = ({ token, sprintId }) => {
   const [parameterList, setParameterList] = useState([]);
@@ -30,8 +28,6 @@ const Vote = ({ token, sprintId }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isupdated, setUpdated] = useState(false);
   const [specialMention, setSpecialMention] = useState("");
-  const [alert, setAlert] = useState();
-  const [open, setOpen] = React.useState(false);
 
   const navigate = useNavigate();
 
@@ -126,71 +122,41 @@ const Vote = ({ token, sprintId }) => {
         postSprintData(voteObj, axiosConfig, sprintId)
           .then((res) => {
             submitSpecialMention();
-            handleClick();
-            setAlert("Voting Successful");
-       
+            alert("Voting Successful");
+            navigate("/dashboard");
           })
           .catch((err) => {
             alert(JSON.stringify(err.response.data, null, 4));
-            handleClick();
-            setAlert("Something Went wrong!!");
+            navigate("/dashboard");
           });
       } else if (isupdated) {
         putSprintData(voteObj, axiosConfig, sprintId)
           .then((res) => {
             submitSpecialMention();
-            handleClick();
-            setAlert("Voting Successful");
-            // navigate("/dashboard");
+            alert("Updation Successful");
+            navigate("/dashboard");
           })
           .catch((err) => {
             alert(JSON.stringify(err.response.data, null, 4));
-            handleClick();
-            setAlert("Something Went wrong!!");
+
+            navigate("/dashboard");
           });
       }
     }
   };
+
   const submitSpecialMention = () => {
     postSpecialMentionData(
       { sprint_id: sprintId, special_mentions: specialMention },
       axiosConfig
     );
   };
-  const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
 
-    setOpen(false);
-  };
-  const handleClick = () => {
-    setOpen(true);
-  };
-  const action = (
-    <React.Fragment>
-      
-      <IconButton
-        size="small"
-        aria-label="close"
-        color="inherit"
-        onClick={handleClose}
-      >
-        <CloseIcon fontSize="small" />
-      </IconButton>
-    </React.Fragment>
-  );
   return (
     <div>
       <Header />
       <Menu />
-      <Snackbar
-        open={open}
-        autoHideDuration={6000}
-        onClose={handleClose}
-        message={alert}
-        action={action}
-      />
+
       {paramList.length > 0 ? (
         <div className="vote--form">
           <h5 className="sprint--heading">Vote</h5>

@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../../component/header/Header";
 import Menu from "../../component/menu/Menu";
-import "./result.css";
+import "./result.scss";
 import { connect } from "react-redux";
 import { useEffect } from "react";
 import {
@@ -46,9 +46,7 @@ const Result = ({ token }) => {
   const [gameData, setGameData] = useState([]);
   const [specialMention, setSpecialMention] = useState([]);
 
-  const [error, setError] = useState(
-    "Either Sprint is Not Active / Result will Anounce Soon"
-  );
+  const [error, setError] = useState("Either Sprint is Not Active / Result will Anounce Soon");
 
   const navigate = useNavigate();
   let axiosConfig = {
@@ -74,9 +72,7 @@ const Result = ({ token }) => {
               });
               setError("");
               if (sprint.show_result === false) {
-                setError(
-                  "Either Sprint is Not Active / Result will Anounce Soon"
-                );
+                setError("Either Sprint is Not Active / Result will Anounce Soon");
               }
             } else if (sprint.is_active === false) {
               setError(
@@ -344,18 +340,22 @@ const Result = ({ token }) => {
           <Menu />
           {sprintObj.sprint_name ? (
             <div>
-              <p
-                class="marqueeStyle"
+              <div
+                id="rssBlock"
                 style={{
                   position: "relative",
                   top: "100px",
-                  left:"38%",
-
+              
                   color: "red",
                 }}
               >
-                {error}
-              </p>
+                <p className="cnnContents">
+                  <span class="marqueeStyle">
+                    &nbsp;
+                    {error}
+                  </span>
+                </p>
+              </div>
 
               <h3 className="result--heading">Game</h3>
 
