@@ -1,0 +1,36 @@
+.admin--form {
+  position: relative;
+  top: 100px;
+  width: 60vw;
+  left: 20%;
+  background-color: white;
+  height: 1000px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+.admin--sprint-form{
+    border:1px solid black;
+    margin: 20px;
+    padding: 20px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+
+}
+.admin--sprint--label {
+
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    border:1px solid green;
+    justify-content: space-evenly;
+    background-color: black;
+    color: white;
+    font-weight: 800;
+  }
+
+  .admin-creat-sprint-form{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }

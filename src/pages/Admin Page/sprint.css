@@ -1,0 +1,8 @@
+.sprint--box {
+
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  border:1px solid green;
+  justify-content: space-evenly;
+}

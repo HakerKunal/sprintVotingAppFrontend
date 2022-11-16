@@ -1,0 +1,209 @@
+.result--form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  top: 100px;
+  width: 90%;
+  left: 5vw;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  overflow: auto;
+  padding-bottom: 400px;
+}
+.result--heading {
+  position: relative;
+  top: 117px;
+  left: 100px;
+  background-color: #fcde67;
+  width: 200px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px 10px 0px 0px;
+  font-size: 18px;
+}
+
+.result--sprint--detail {
+  position: relative;
+  width: 700px;
+  display: flex;
+  justify-content: space-evenly;
+
+  top: 100px;
+  left: 100px;
+  padding: 10px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.result--question {
+  padding: 10px;
+  font-size: large;
+  background-color: #fcde67;
+  display: flex;
+  justify-content: center;
+  width: 200px;
+  margin-bottom: 20px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+.result--answer {
+  padding: 10px;
+  font-size: large;
+  background-color: #dfdfdf;
+  display: flex;
+  justify-content: center;
+  width: 350px;
+  margin-bottom: 20px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.result--graph--area {
+  position: relative;
+  top: 200px;
+  left: 5vw;
+  z-index: 10;
+  width: 90%;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  transition: all 0.3s ease-out;
+}
+
+.result--winner--name {
+  position: relative;
+  top: 300px;
+  left: 35vw;
+  width: 350px;
+  display: flex;
+  margin-bottom: 20px;
+  height: 40px;
+  align-items: center;
+  justify-content: space-evenly;
+  transition: all 0.3s ease-out;
+}
+.result--winner-text {
+  background-color: #fcde67;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.result--winner--name--text {
+  background-color: #bdb8a5;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+table {
+  position: relative;
+  top: 350px;
+  left: 10vw;
+  border: 2px solid gray;
+  width: 70vw;
+  height: 200px;
+  table-layout: fixed;
+}
+
+th {
+  border-bottom: 1px solid black;
+  word-wrap: break-word;
+}
+
+td {
+  text-align: center;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  word-wrap: break-word;
+}
+
+.result--vote--details--title {
+  position: relative;
+  top: 350px;
+  left: 300px;
+  background-color: black;
+  color: white;
+
+  width: 200px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px 10px 0px 0px;
+  font-size: 18px;
+}
+
+.result--sprint--detail--title {
+  position: relative;
+  background-color: black;
+  top: 100px;
+  left: 100px;
+  width: 200px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px 10px 0px 0px;
+  font-size: 18px;
+  color: white;
+}
+
+.divide--line {
+  border: 1px solid black;
+}
+.blank_row {
+  position: relative;
+  display: block;
+  flex-direction: column;
+  bottom: 43px;
+  height: 2px !important; /* overwrites any other rules */
+  background: #f0cc00;
+  width: 69vw !important;
+}
+.special_mention {
+  position: relative;
+  bottom: 20px;
+  width: 69vw !important;
+}
+.accordian_row {
+  box-shadow: 0 0 4px 2px #4295c5 !important;
+  box-shadow: rgba(70, 150, 211, 0.3) 2px 1px 2px 2px,
+    rgba(92, 165, 50, 0.15) 2px 2px 6px px !important;
+  width: 69vw;
+}
+
+.game--dashboard {
+  position: relative;
+  bottom: 430px;
+  left: 72%;
+  border: 1px solid #dedede;
+
+  box-shadow: 0 0 4px 4px #dedede;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  min-height: 500px;
+}
+.game--dashboard--headings {
+  box-shadow: 0 0 4px 4px #c8da76;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 90%;
+}
+
+.game--dashboard-entries {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 90%;
+}
+
+

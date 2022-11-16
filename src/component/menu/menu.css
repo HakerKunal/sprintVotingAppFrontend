@@ -1,0 +1,67 @@
+.menu--outter{
+
+    width:300px;
+    position: relative;
+
+    left:40vw;
+    top:40px;
+    display: flex;
+    justify-content: space-around;
+    height: 50px;
+    align-items: center;
+}
+
+.menu--vote{
+    position: relative;
+    width: 50%;
+    height: 100%;
+    background-color: black;
+    color:white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px 0px 0px 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.menu--result{
+    width: 50%;
+    height: 100%;
+    background-color: grey;
+    align-items: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0px 20px 20px 0px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-left :1px  solid black;
+   
+}
+.menu--vote:hover{
+    background-color: #d8b31d;
+}
+
+.menu--result:hover{
+    background-color: #ac6b5a;
+}
+
+
+.menu--admin{
+    position: absolute;
+    left:500px;
+    width: 200px;
+    height: 100%;
+    background-color: grey;
+    align-items: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px 20px 20px 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-left :1px  solid black;
+   
+}
+
+.menu--admin:hover{
+    background-color: #ac6b5a;
+}

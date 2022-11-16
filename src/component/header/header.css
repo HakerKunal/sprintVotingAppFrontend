@@ -1,0 +1,27 @@
+body {
+  background-color: #fffffb;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  height: 120px;
+  background-color: black;
+  justify-content: space-between;
+  padding-left: 30px;
+  padding-right: 30px;
+  align-items: center;
+  color:white;
+
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.header--buttons{
+ 
+    width: 250px;
+    position: relative;
+    right: 100px;
+    display: flex;
+    justify-content: space-between;
+}
+
