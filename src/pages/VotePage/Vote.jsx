@@ -177,7 +177,7 @@ const Vote = ({ token, sprintId }) => {
                 aria-controls="panel1a-content"
                 id="panel1a-header"
               >
-                <Typography>Special Mention</Typography>
+                <Typography>Honourable Mention</Typography>
               </AccordionSummary>
               <AccordionDetails>
                 <TextField

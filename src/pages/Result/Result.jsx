@@ -46,7 +46,9 @@ const Result = ({ token }) => {
   const [gameData, setGameData] = useState([]);
   const [specialMention, setSpecialMention] = useState([]);
 
-  const [error, setError] = useState("Either Sprint is Not Active / Result will Anounce Soon");
+  const [error, setError] = useState(
+    "Either Sprint is Not Active / Result will Anounce Soon"
+  );
 
   const navigate = useNavigate();
   let axiosConfig = {
@@ -72,7 +74,9 @@ const Result = ({ token }) => {
               });
               setError("");
               if (sprint.show_result === false) {
-                setError("Either Sprint is Not Active / Result will Anounce Soon");
+                setError(
+                  "Either Sprint is Not Active / Result will Anounce Soon"
+                );
               }
             } else if (sprint.is_active === false) {
               setError(
@@ -97,8 +101,12 @@ const Result = ({ token }) => {
   useEffect(() => {
     sprintObj.id &&
       getSpecialMentionResultData(sprintObj.id)
-        .then((res) => setSpecialMention(res.data.data))
+        .then((res) => {
+          console.log(res);
+          setSpecialMention(res.data.data);
+        })
         .catch((err) => console.log(err));
+    //
   }, [sprintObj.id]);
 
   useEffect(() => {
@@ -192,8 +200,7 @@ const Result = ({ token }) => {
                       <label className="result--winner-text">Winner</label>
                       <label className="result--winner--name--text">
                         {resultData
-                          ? resultData.winner.charAt(0).toUpperCase() +
-                            resultData.winner.slice(1)
+                          ? resultData.winner.map((x) => x + " ")
                           : ""}
                       </label>
                     </div>
@@ -203,8 +210,7 @@ const Result = ({ token }) => {
                       </label>
                       <label className="result--winner--name--text">
                         {resultData
-                          ? resultData.first_runner_up.charAt(0).toUpperCase() +
-                            resultData.first_runner_up.slice(1)
+                          ? resultData.first_runner_up.map((x) => x + " ")
                           : ""}
                       </label>
                     </div>
@@ -214,10 +220,7 @@ const Result = ({ token }) => {
                       </label>
                       <label className="result--winner--name--text">
                         {resultData
-                          ? resultData.second_runner_up
-                              .charAt(0)
-                              .toUpperCase() +
-                            resultData.second_runner_up.slice(1)
+                          ? resultData.second_runner_up.map((x) => x + " ")
                           : ""}
                       </label>
                     </div>
@@ -237,14 +240,17 @@ const Result = ({ token }) => {
                           .map((val, key) => {
                             let changed = true;
                             let changed2 = false;
-                            if (!listOfVoteBy.includes(val.vote_by)) {
-                              listOfVoteBy.push(val.vote_by);
+
+                            if (
+                              !listOfVoteBy.includes(val.vote_by.toLowerCase())
+                            ) {
+                              listOfVoteBy.push(val.vote_by.toLowerCase());
                               if (listOfVoteBy.length > 1) {
                                 changed = false;
                                 changed2 = false;
                               }
                             } else {
-                              listOfVoteBy.push(val.vote_by);
+                              listOfVoteBy.push(val.vote_by.toLowerCase());
                               changed = true;
                               changed2 = true;
                             }
@@ -265,9 +271,12 @@ const Result = ({ token }) => {
                                   <></>
                                 ) : (
                                   specialMention.map((mention) => {
-                                    if (val.vote_by === mention.vote_by) {
+                                    if (
+                                      val.vote_by.toLowerCase() ===
+                                      mention.vote_by.toLowerCase()
+                                    ) {
                                       return (
-                                        <Accordion
+                                        <Accordion sx={{position:'relative',top:5}}
                                           className="accordian_row"
                                           fullWidth
                                         >
@@ -277,7 +286,7 @@ const Result = ({ token }) => {
                                             id="panel1a-header"
                                           >
                                             <Typography>
-                                              Special Mention
+                                            Honourable Mention
                                             </Typography>
                                           </AccordionSummary>
                                           <AccordionDetails>
@@ -345,7 +354,7 @@ const Result = ({ token }) => {
                 style={{
                   position: "relative",
                   top: "100px",
-              
+
                   color: "red",
                 }}
               >

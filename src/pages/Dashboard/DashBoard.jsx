@@ -25,6 +25,8 @@ const Dashboard = ({ token, setSprintData }) => {
   useEffect(() => {
     getSprintData(axiosConfig)
       .then((res) => {
+        let t = res.data.data.filter((sprint) => sprint.is_active === true);
+        console.log(t)
         setSprintObj({
           ...sprintObj,
           id: res.data.is_active[0].id,
@@ -86,30 +88,30 @@ const Dashboard = ({ token, setSprintData }) => {
                 </button>
               </>
             ) : (
-              <p
-                style={{
-                  position: "relative",
+              <CircularProgress
+                color="inherit"
+                thickness={5}
+                size={60}
+                sx={{
+                  position: "absolute",
+                  left: "50%",
                   top: "40%",
-                  left: "40%",
-                  color: "red",
+                  transform: "translate(-50%, -50%)",
                 }}
-              >
-                No Sprint is Active
-              </p>
+              />
             )}
           </div>
         ) : (
-          <CircularProgress
-          color='inherit'
-          thickness={5}
-          size={60}
-            sx={{
-              position: "absolute",
-              left: "50%",
-              top: "40%",
-              transform: "translate(-50%, -50%)",
+          <p
+            style={{
+              position: "relative",
+              top: "100px",
+              left: "40%",
+              color: "red",
             }}
-          />
+          >
+            No Sprint is Active
+          </p>
         )}
       </div>
     );

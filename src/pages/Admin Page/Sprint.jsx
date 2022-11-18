@@ -95,13 +95,13 @@ const Sprint = ({ sprintObj, token }) => {
       ></input>
       <input
         type="text"
-        style={{ position: "relative", right: "25px" }}
+        style={{ position: "relative", right: "25px", width: 70 }}
         value={sprintDetails.start_date}
         onChange={changeStartDate}
       ></input>
       <input
         type="text"
-        style={{ position: "relative", right: "40px" }}
+        style={{ position: "relative", right: "40px", width: 70 }}
         value={sprintDetails.end_date}
         onChange={changeEndDate}
       ></input>
