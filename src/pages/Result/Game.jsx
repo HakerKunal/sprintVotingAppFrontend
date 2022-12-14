@@ -90,15 +90,6 @@ const Game = ({ sprint, token }) => {
       const highScore = Math.min(moves, bestScore);
       setBestScore(highScore);
       
-     
-      if (sprint.id) {
-        let localStorageKey="score"+sprint.id
-        localStorage.setItem(localStorageKey,{"bestScore": highScore,"sprint_id":sprint.id});
-        let gameObj = { score: highScore, sprint_id: sprint.id };
-        postGameData(gameObj, axiosConfig)
-          // .then((res) => console.log(res))
-          // .catch((err) => console.log(err));
-      }
     }
   };
 

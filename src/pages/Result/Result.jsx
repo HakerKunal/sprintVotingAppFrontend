@@ -102,23 +102,6 @@ const Result = ({ token }) => {
     //
   }, [sprintObj.id]);
 
-  useEffect(() => {
-    setTimeout(() => {
-      getGameData(sprintObj.id, axiosConfig).then((res) => {
-        setGameData(res.data.data);
-      });
-    }, 1000);
-
-    const interval = setInterval(() => {
-      !sprintObj.show_result &&
-        getGameData(sprintObj.id, axiosConfig).then((res) => {
-          setGameData(res.data.data);
-        });
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, [sprintObj.id]);
-
   const dataPoints = resultData ? resultData.vote_count : [{}];
 
   const options = {
@@ -210,33 +193,6 @@ const Result = ({ token }) => {
 
               <div className="result--form">
                 <Game sprint={sprintObj} />
-                <div className="game--dashboard">
-                  <h4>Scoreboard</h4>
-                  <div className="game--dashboard--headings">
-                    <p>Position</p>
-                    <p>Name</p>
-                    <p>Moves</p>
-                  </div>
-                  {gameData &&
-                    gameData
-                      .filter((f) => f.score > 0)
-                      .sort(function (a, b) {
-                        return a.score - b.score;
-                      })
-                      .map((entry, key) => (
-                        <div className="game--dashboard-entries">
-                          <p style={{ width: 20, textAlign: "center" }}>
-                            {key + 1}
-                          </p>
-                          <p style={{ width: 100, textAlign: "center" }}>
-                            {entry.username}
-                          </p>
-                          <p style={{ width: 20, textAlign: "center" }}>
-                            {entry.score}
-                          </p>
-                        </div>
-                      ))}
-                </div>
               </div>
             </div>
           ) : (
