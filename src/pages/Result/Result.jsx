@@ -200,7 +200,7 @@ const Result = ({ token }) => {
                       <label className="result--winner-text">Winner</label>
                       <label className="result--winner--name--text">
                         {resultData
-                          ? resultData.winner.map((x) => x + " ")
+                          ? resultData.winner.map((x) => x + ", ")
                           : ""}
                       </label>
                     </div>
@@ -210,7 +210,7 @@ const Result = ({ token }) => {
                       </label>
                       <label className="result--winner--name--text">
                         {resultData
-                          ? resultData.first_runner_up.map((x) => x + " ")
+                          ? resultData.first_runner_up.map((x) => x + ", ")
                           : ""}
                       </label>
                     </div>
@@ -220,7 +220,7 @@ const Result = ({ token }) => {
                       </label>
                       <label className="result--winner--name--text">
                         {resultData
-                          ? resultData.second_runner_up.map((x) => x + " ")
+                          ? resultData.second_runner_up.map((x) => x + ", ")
                           : ""}
                       </label>
                     </div>
