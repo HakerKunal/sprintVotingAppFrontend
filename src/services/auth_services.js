@@ -1,7 +1,7 @@
 import axios from "axios";
 
  export const signinServer = (obj) => {
-    let response = axios.post("http://127.0.0.1:8000/user/login", obj);
+    let response = axios.post("https://sprint-backend.vercel.app/user/login", obj);
     return response;
   
   };
@@ -9,7 +9,7 @@ import axios from "axios";
 
 
  export const signupServer = (obj) => {
-  let response = axios.post("http://127.0.0.1:8000/user/register", obj);
+  let response = axios.post("https://sprint-backend.vercel.app/user/register", obj);
   return response;
 };
 

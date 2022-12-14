@@ -1,6 +1,6 @@
 import axios from "axios";
 const LOCALURL='http://127.0.0.1:8000'
-const HEROKUURL='http://127.0.0.1:8000'
+const HEROKUURL='https://sprint-backend.vercel.app'
 
  export const getSprintData = (config) => {
     let response = axios.get(HEROKUURL+"/sprint/sprints", config);
