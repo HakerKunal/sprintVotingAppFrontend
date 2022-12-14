@@ -20,19 +20,13 @@ import CircularProgress from "@mui/material/CircularProgress";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
-import { Typography, TextField, Paper, Box, Grid } from "@mui/material";
+import { Typography } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import VoteTable from "../../component/Table/VoteTable";
+import WinnerBox from "../../component/Winner Box/WinnerBox";
+import SprintDetailBox from "../../component/Sprint Detail Box/SprintDetailBox";
 var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
-
-const DarkerDisabledTextField = withStyles({
-  root: {
-    marginRight: 8,
-    "& .MuiInputBase-root.Mui-disabled": {
-      color: "#ffffff !important", // (default alpha is 0.38)
-    },
-  },
-})(TextField);
 
 const Result = ({ token }) => {
   const [resultData, setResultData] = useState();
@@ -102,7 +96,6 @@ const Result = ({ token }) => {
     sprintObj.id &&
       getSpecialMentionResultData(sprintObj.id)
         .then((res) => {
-          console.log(res);
           setSpecialMention(res.data.data);
         })
         .catch((err) => console.log(err));
@@ -156,171 +149,18 @@ const Result = ({ token }) => {
               <div className="result--form">
                 {sprintObj.sprint_name ? (
                   <>
-                    {" "}
-                    <label className="result--sprint--detail--title">
-                      Sprint Detail
-                    </label>
-                    <div className="result--sprint--detail">
-                      <div>
-                        <label className="result--question">Sprint Name</label>
-                        <label className="result--question">Start Date </label>
-                        <label className="result--question">End Date </label>
-                      </div>
-                      <div>
-                        <label className="result--answer">
-                          {sprintObj.sprint_name ? (
-                            sprintObj.sprint_name
-                          ) : (
-                            <h7>loading...</h7>
-                          )}
-                        </label>
-                        <label className="result--answer">
-                          {sprintObj.start_date ? (
-                            sprintObj.start_date
-                          ) : (
-                            <h7>loading...</h7>
-                          )}
-                        </label>
-                        <label className="result--answer">
-                          {sprintObj.end_date ? (
-                            sprintObj.end_date
-                          ) : (
-                            <h7>loading...</h7>
-                          )}
-                        </label>
-                      </div>
-                    </div>
+                    <SprintDetailBox selectSprint={sprintObj} />
                     <div className="result--graph--area">
                       <CanvasJSChart
                         options={options}
                         /* onRef={ref => this.chart = ref} */
                       />
                     </div>
-                    <div className="result--winner--name">
-                      <label className="result--winner-text">Winner</label>
-                      <label className="result--winner--name--text">
-                        {resultData
-                          ? resultData.winner.map((x) => x + " ")
-                          : ""}
-                      </label>
-                    </div>
-                    <div className="result--winner--name">
-                      <label className="result--winner-text">
-                        First Runner Up
-                      </label>
-                      <label className="result--winner--name--text">
-                        {resultData
-                          ? resultData.first_runner_up.map((x) => x + " ")
-                          : ""}
-                      </label>
-                    </div>
-                    <div className="result--winner--name">
-                      <label className="result--winner-text">
-                        Second Runner Up
-                      </label>
-                      <label className="result--winner--name--text">
-                        {resultData
-                          ? resultData.second_runner_up.map((x) => x + " ")
-                          : ""}
-                      </label>
-                    </div>
-                    <label className="result--vote--details--title">
-                      Vote Details
-                    </label>
-                    <table>
-                      <tr>
-                        <th>S.No.</th>
-                        <th>Vote By</th>
-                        <th>Vote To</th>
-                        <th>Parameter</th>
-                      </tr>
-                      {resultData ? (
-                        resultData.vote_details
-                          .sort((a, b) => a.vote_by.localeCompare(b.vote_by))
-                          .map((val, key) => {
-                            let changed = true;
-                            let changed2 = false;
-
-                            if (
-                              !listOfVoteBy.includes(val.vote_by.toLowerCase())
-                            ) {
-                              listOfVoteBy.push(val.vote_by.toLowerCase());
-                              if (listOfVoteBy.length > 1) {
-                                changed = false;
-                                changed2 = false;
-                              }
-                            } else {
-                              listOfVoteBy.push(val.vote_by.toLowerCase());
-                              changed = true;
-                              changed2 = true;
-                            }
-
-                            return (
-                              <>
-                                {changed ? (
-                                  <></>
-                                ) : (
-                                  <>
-                                    <div
-                                      class="blank_row"
-                                      style={{ bottom: 1 }}
-                                    ></div>
-                                  </>
-                                )}
-                                {changed2 ? (
-                                  <></>
-                                ) : (
-                                  specialMention.map((mention) => {
-                                    if (
-                                      val.vote_by.toLowerCase() ===
-                                      mention.vote_by.toLowerCase()
-                                    ) {
-                                      return (
-                                        <Accordion sx={{position:'relative',top:5}}
-                                          className="accordian_row"
-                                          fullWidth
-                                        >
-                                          <AccordionSummary
-                                            expandIcon={<ExpandMoreIcon />}
-                                            aria-controls="panel1a-content"
-                                            id="panel1a-header"
-                                          >
-                                            <Typography>
-                                            Honourable Mention
-                                            </Typography>
-                                          </AccordionSummary>
-                                          <AccordionDetails>
-                                            <span
-                                              style={{
-                                                border:
-                                                  "1px solid rgba(0,0,0,0.25)",
-                                                padding: "20px 10px ",
-                                                borderRadius: 7,
-                                                display: "block",
-                                                whiteSpace: "pre",
-                                              }}
-                                            >
-                                              {mention.special_mentions}
-                                            </span>
-                                          </AccordionDetails>
-                                        </Accordion>
-                                      );
-                                    }
-                                  })
-                                )}
-                                <tr key={key}>
-                                  <td>{key + 1}</td>
-                                  <td>{val.vote_by}</td>
-                                  <td>{val.vote_to}</td>
-                                  <td>{val.parameter_name}</td>
-                                </tr>
-                              </>
-                            );
-                          })
-                      ) : (
-                        <p>Not Voted Till Now</p>
-                      )}
-                    </table>
+                    <WinnerBox resultData={resultData} />
+                    <VoteTable
+                      resultData={resultData}
+                      specialMention={specialMention}
+                    />
                   </>
                 ) : (
                   <p>No Sprint is Active</p>

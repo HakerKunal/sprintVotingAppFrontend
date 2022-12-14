@@ -11,6 +11,7 @@ const Menu=({is_superUser})=>{
         <div className="menu--vote" onClick={()=>navigate("/dashboard")}>Vote</div>
         <div className="menu--result" onClick={()=>navigate("/result")}>Result</div>
         {is_superUser && <div className="menu--admin" onClick={()=>navigate("/admin")}>Admin Panel</div>}
+        <div className="menu--view-past" onClick={()=>navigate("/past-results")}>View Past Results</div>
 
     </div>
     )
