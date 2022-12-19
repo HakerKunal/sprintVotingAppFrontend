@@ -25,6 +25,8 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import VoteTable from "../../component/Table/VoteTable";
 import WinnerBox from "../../component/Winner Box/WinnerBox";
 import SprintDetailBox from "../../component/Sprint Detail Box/SprintDetailBox";
+import ExportExcelButton from "./ExportExcelButton";
+
 var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
@@ -148,19 +150,25 @@ const Result = ({ token }) => {
                       </button>
                     </div>
                     <SprintDetailBox selectSprint={sprintObj} />
+                    {resultData?.vote_count && (
+                      <div style={{ position: "relative", top: 150 }}>
+                        <ExportExcelButton
+                          sprintObj={sprintObj}
+                          resultData={resultData}
+                        />
+                      </div>
+                    )}
+
                     {!winner && (
                       <>
                         <div className="result--graph--area">
-                          <CanvasJSChart
-                            options={options}
-                            /* onRef={ref => this.chart = ref} */
-                          />
+                          <CanvasJSChart options={options} />
                         </div>
                         <WinnerBox resultData={resultData} />
                       </>
                     )}
                     {winner && (
-                      <div style={{position:"relative",bottom:150}}>
+                      <div style={{ marginTop: "-100px" }}>
                         <VoteTable
                           resultData={resultData}
                           specialMention={specialMention}

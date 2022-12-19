@@ -16,6 +16,7 @@ import { useState } from "react";
 import VoteTable from "../../component/Table/VoteTable";
 import WinnerBox from "../../component/Winner Box/WinnerBox";
 import SprintDetailBox from "../../component/Sprint Detail Box/SprintDetailBox";
+import ExportExcelButton from "../Result/ExportExcelButton";
 
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
@@ -65,7 +66,6 @@ const PastResult = ({ token }) => {
       },
     ],
   };
-
   return (
     <div>
       <Header />
@@ -94,6 +94,15 @@ const PastResult = ({ token }) => {
         {selectSprint !== 0 && (
           <>
             <SprintDetailBox selectSprint={selectSprint} />
+
+            {resultData.vote_count && (
+              <div style={{ position: "relative", top: 150 }}>
+                <ExportExcelButton
+                  sprintObj={selectSprint}
+                  resultData={resultData}
+                />
+              </div>
+            )}
             <div className="result--graph--area">
               <CanvasJSChart
                 options={options}

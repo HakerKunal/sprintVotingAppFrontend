@@ -26,7 +26,9 @@
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.4.1",
     "save-dev": "^0.0.1-security",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "xlsx": "^0.18.5",
+    "xlsx-populate": "^1.21.0"
   },
   "scripts": {
     "start": "react-scripts start",

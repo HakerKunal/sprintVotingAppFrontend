@@ -9,8 +9,22 @@ const VoteTable = ({ resultData, specialMention }) => {
   let listOfVoteBy = [];
   return (
     <>
-      <label className="result--vote--details--title">Vote Details</label>
       <table>
+        <div
+          style={{
+            width: "69vw",
+            backgroundColor: "black",
+            color: "white",
+            height: "30px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            borderRadius: "10px 10px 10px 10px",
+            fontSize: "18px",
+          }}
+        >
+          Vote Details
+        </div>
         <tr>
           <th>S.No.</th>
           <th>Vote By</th>
