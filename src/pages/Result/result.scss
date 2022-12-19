@@ -71,19 +71,23 @@
     rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
   transition: all 0.3s ease-out;
 }
-
-.result--winner--name {
+.result--winner-box{
   position: relative;
   top: 300px;
-  left: 35vw;
   width: 30%;
   max-width: 600px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+.result--winner--name {
+  
+
   display: flex;
   margin-bottom: 20px;
   height: 40px;
-  align-items: center;
-  justify-content: space-evenly;
-  transition: all 0.3s ease-out;
 }
 .result--winner-text {
   background-color: #fcde67;
@@ -92,7 +96,62 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
 }
+.result-subheader {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: 50px;
+  align-items: center;
+}
+
+.subheader--button {
+  align-items: center;
+  background-clip: padding-box;
+  background-color: #fa6400;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: 3rem;
+  padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+}
+
+.subheader--button:hover,
+.subheader--button:focus {
+  background-color: #fb8332;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+}
+
+.subheader--button:hover {
+  transform: translateY(-1px);
+}
+
+.subheader--button:active {
+  background-color: #c85000;
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  transform: translateY(0);
+}
+
 .result--winner--name--text {
   background-color: #bdb8a5;
   height: 100%;
@@ -100,7 +159,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  
+  text-align: center;
 }
 table {
   position: relative;
@@ -207,36 +266,35 @@ td {
   justify-content: space-evenly;
   width: 90%;
 }
-#rssBlock{
-  left:0px;
+#rssBlock {
+  left: 0px;
   height: 80px;
-  background: #FFFFFF;
+  background: #ffffff;
   position: absolute;
-  width:100%;
+  width: 100%;
   overflow: hidden;
 }
 
 .cnnContents {
-  width:100%;
+  width: 100%;
   padding-top: 20px;
-  margin:0 auto;
+  margin: 0 auto;
   font-size: 30px;
   white-space: nowrap;
   text-transform: uppercase;
-  font-family: 'Museo';
+  font-family: "Museo";
   font-weight: 300;
 }
 
 .marqueeStyle {
- 
-  display:inline-block;
+  display: inline-block;
   /* Apply animation to this element */
   -webkit-animation: scrolling-left1 20s linear infinite;
   animation: scrolling-left1 20s linear infinite;
 }
 
 .marqueeStyle2 {
-  display:inline-block;
+  display: inline-block;
   /* Apply animation to this element */
   -webkit-animation: scrolling-left2 20s linear infinite;
   animation: scrolling-left2 20s linear infinite;
@@ -244,25 +302,39 @@ td {
 }
 /* scrolling-left is continuous/repeatly text */
 @keyframes scrolling-left1 {
-    0% {transform: translateX(200%);
-        -webkit-transform: translateX(200%);}
-      100% {transform: translateX(0%);
-          -webkit-transform: translateX(-100%);}
+  0% {
+    transform: translateX(200%);
+    -webkit-transform: translateX(200%);
+  }
+  100% {
+    transform: translateX(0%);
+    -webkit-transform: translateX(-100%);
+  }
 }
 @keyframes scrolling-left2 {
-    0% {transform: translateX(0%);
-        -webkit-transform: translateX(0%);}
-      100% {transform: translateX(-200%);
-          -webkit-transform: translateX(-200%);}
+  0% {
+    transform: translateX(0%);
+    -webkit-transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-200%);
+    -webkit-transform: translateX(-200%);
+  }
 }
 
 @-webkit-keyframes scrolling-left1 {
-    0% {-webkit-transform: translateX(200%);}
-      100% {-webkit-transform: translateX(-100%);}
+  0% {
+    -webkit-transform: translateX(200%);
+  }
+  100% {
+    -webkit-transform: translateX(-100%);
+  }
 }
 @-webkit-keyframes scrolling-left2 {
-    0% {-webkit-transform: translateX(0%);}
-      100% {-webkit-transform: translateX(-200%);}
+  0% {
+    -webkit-transform: translateX(0%);
+  }
+  100% {
+    -webkit-transform: translateX(-200%);
+  }
 }
-
-

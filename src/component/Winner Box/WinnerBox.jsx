@@ -2,7 +2,7 @@ import React from "react";
 
 const WinnerBox = ({ resultData }) => {
   return (
-    <>
+    <div className="result--winner-box">
       <div className="result--winner--name">
         <label className="result--winner-text">Winner</label>
         <label className="result--winner--name--text">
@@ -21,7 +21,7 @@ const WinnerBox = ({ resultData }) => {
           {resultData ? resultData.second_runner_up.map((x) => x + " ") : ""}
         </label>
       </div>
-    </>
+    </div>
   );
 };
 export default WinnerBox;

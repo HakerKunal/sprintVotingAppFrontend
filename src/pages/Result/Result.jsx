@@ -37,8 +37,8 @@ const Result = ({ token }) => {
     end_date: "",
     show_result: "",
   });
-  const [gameData, setGameData] = useState([]);
   const [specialMention, setSpecialMention] = useState([]);
+  const [winner, setWinner] = useState(true);
 
   const [error, setError] = useState(
     "Either Sprint is Not Active / Result will Anounce Soon"
@@ -127,23 +127,46 @@ const Result = ({ token }) => {
           <Menu />
           {resultData ? (
             <div>
-              {" "}
               <h3 className="result--heading">Result</h3>
               <div className="result--form">
                 {sprintObj.sprint_name ? (
                   <>
-                    <SprintDetailBox selectSprint={sprintObj} />
-                    <div className="result--graph--area">
-                      <CanvasJSChart
-                        options={options}
-                        /* onRef={ref => this.chart = ref} */
-                      />
+                    <div className="result-subheader">
+                      <button
+                        className="subheader--button"
+                        style={{ margin: "0px 30px" }}
+                        onClick={() => setWinner(true)}
+                      >
+                        Vote Details
+                      </button>
+                      <button
+                        className="subheader--button"
+                        style={{ margin: "0px 30px" }}
+                        onClick={() => setWinner(false)}
+                      >
+                        Winner
+                      </button>
                     </div>
-                    <WinnerBox resultData={resultData} />
-                    <VoteTable
-                      resultData={resultData}
-                      specialMention={specialMention}
-                    />
+                    <SprintDetailBox selectSprint={sprintObj} />
+                    {!winner && (
+                      <>
+                        <div className="result--graph--area">
+                          <CanvasJSChart
+                            options={options}
+                            /* onRef={ref => this.chart = ref} */
+                          />
+                        </div>
+                        <WinnerBox resultData={resultData} />
+                      </>
+                    )}
+                    {winner && (
+                      <div style={{position:"relative",bottom:150}}>
+                        <VoteTable
+                          resultData={resultData}
+                          specialMention={specialMention}
+                        />
+                      </div>
+                    )}
                   </>
                 ) : (
                   <p>No Sprint is Active</p>

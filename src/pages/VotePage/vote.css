@@ -1,8 +1,10 @@
 .vote--form {
   position: relative;
   top: 100px;
-  width: 800px;
-  left: 500px;
+  width: 45%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   background-color: white;
   height: 700px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
@@ -11,9 +13,13 @@
 
 .vote--innerform {
   position: relative;
-  left: 150px;
+
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  padding: 20px;
   border: 1px solid black;
-  width: 60%;
+
   padding-bottom: 80px;
   display: flex;
   justify-content: flex-start;
@@ -73,7 +79,6 @@
   font-size: 18px;
 }
 
-.vote--button:hover{
-    background-color: #1e89a3;
-
+.vote--button:hover {
+  background-color: #1e89a3;
 }
