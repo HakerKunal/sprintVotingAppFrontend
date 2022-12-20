@@ -189,7 +189,7 @@ const Result = ({ token }) => {
               sx={{
                 position: "absolute",
                 left: "50%",
-                top: "40%",
+                top: "50%",
                 transform: "translate(-50%, -50%)",
               }}
             />
@@ -234,7 +234,7 @@ const Result = ({ token }) => {
               sx={{
                 position: "absolute",
                 left: "50%",
-                top: "40%",
+                top: "80%",
                 transform: "translate(-50%, -50%)",
               }}
             />
