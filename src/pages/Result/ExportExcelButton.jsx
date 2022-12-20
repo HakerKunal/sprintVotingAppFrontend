@@ -72,21 +72,29 @@ const ExportExcelButton = ({ sprintObj, resultData }) => {
           C: v.y,
         });
       });
-      winner.forEach((w) => {
+      let voteWinnerList = [];
+      for (
+        let i = 0;
+        i <= winner.length ||
+        i <= firstRunner.length ||
+        i <= secondRunner.length;
+        i++
+      ) {
+        let obj = {
+          winner: winner[i] || null,
+          firstRunner: firstRunner[i] || null,
+          secondRunner: secondRunner[i] || null,
+        };
+        voteWinnerList.push(obj);
+      }
+      voteWinnerList.forEach((v) => {
         table2.push({
-          A: w,
+          A: v.winner,
+          B: v.firstRunner,
+          C: v.secondRunner,
         });
       });
-      firstRunner.forEach((w) => {
-        table2.push({
-          B: w,
-        });
-      });
-      secondRunner.forEach((w) => {
-        table2.push({
-          C: w,
-        });
-      });
+
       voteDetails.forEach((v, index) => {
         table3.push({
           A: index + 1,
@@ -111,7 +119,6 @@ const ExportExcelButton = ({ sprintObj, resultData }) => {
       .concat([""])
       .concat([{ A: "Winners List" }])
       .concat(table2)
-      .concat([""])
       .concat([""])
       .concat([{ A: "Vote Counts" }])
       .concat(table1)
@@ -230,22 +237,6 @@ const ExportExcelButton = ({ sprintObj, resultData }) => {
           bold: true,
           fontColor: "ffffff",
         });
-        // sheet.range(dataInfo.theadRange1).style({
-        //   fill: "808080",
-        //   bold: true,
-        //   fontColor: "ffffff",
-        // });
-        // sheet.range(dataInfo.theadRange2).style({
-        //   fill: "808080",
-        //   bold: true,
-        //   fontColor: "ffffff",
-        // });
-        // sheet.range(dataInfo.theadRange3).merged(true).style({
-        //   bold: true,
-        // });
-        // sheet.range(dataInfo.theadRange4).merged(true).style({
-        //   bold: true,
-        // });
       });
       return workbook
         .outputAsync()
@@ -259,6 +250,8 @@ const ExportExcelButton = ({ sprintObj, resultData }) => {
         width: "300px",
         borderTopLeftRadius: 0,
         borderBottomLeftRadius: 0,
+        borderTopRightRadius:30,
+        borderBottomRightRadius:30,
         margin: 0,
       }}
       onClick={hanldeExportExcel}
