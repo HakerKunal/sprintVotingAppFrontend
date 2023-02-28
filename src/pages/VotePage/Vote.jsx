@@ -107,7 +107,7 @@ const Vote = ({ token, sprintId }) => {
         className="vote--select"
         onChange={(event) => changeVote(event, param)}
       >
-        <option value={""}>please select a value</option>
+        <option value={""}>please select a name</option>
         {options.map((user) => (
           <option value={user.value}>{user.label}</option>
         ))}
