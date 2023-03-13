@@ -26,7 +26,6 @@ const Dashboard = ({ token, setSprintData }) => {
     getSprintData(axiosConfig)
       .then((res) => {
         let t = res.data.data.filter((sprint) => sprint.is_active === true);
-        console.log(t);
         setSprintObj({
           ...sprintObj,
           id: res.data.is_active[0].id,

@@ -100,7 +100,7 @@ const Result = ({ token }) => {
         .then((res) => {
           setSpecialMention(res.data.data);
         })
-        .catch((err) => console.log(err));
+     
     //
   }, [sprintObj.id]);
 

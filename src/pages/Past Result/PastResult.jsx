@@ -50,7 +50,7 @@ const PastResult = ({ token }) => {
       .then((res) => {
         setSpecialMention(res.data.data);
       })
-      .catch((err) => console.log(err));
+
   };
   const dataPoints = resultData ? resultData.vote_count : [{}];
 
