@@ -11,17 +11,12 @@ import {
   getSpecialMentionResultData,
   getSprintData,
 } from "../../services/sprint_service";
-import { withStyles } from "@material-ui/core/styles";
 import { useState } from "react";
 import CanvasJSReact from "../../assets/canvasjs.react";
 import { useNavigate } from "react-router-dom";
 import Game from "./Game";
 import CircularProgress from "@mui/material/CircularProgress";
-import Accordion from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import { Typography } from "@mui/material";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+
 import VoteTable from "../../component/Table/VoteTable";
 import WinnerBox from "../../component/Winner Box/WinnerBox";
 import SprintDetailBox from "../../component/Sprint Detail Box/SprintDetailBox";
@@ -96,11 +91,10 @@ const Result = ({ token }) => {
   }, [sprintObj.id]);
   useEffect(() => {
     sprintObj.id &&
-      getSpecialMentionResultData(sprintObj.id)
-        .then((res) => {
-          setSpecialMention(res.data.data);
-        })
-     
+      getSpecialMentionResultData(sprintObj.id).then((res) => {
+        setSpecialMention(res.data.data);
+      });
+
     //
   }, [sprintObj.id]);
 
@@ -118,8 +112,6 @@ const Result = ({ token }) => {
       },
     ],
   };
-
-  let listOfVoteBy = [];
 
   if (token) {
     if (sprintObj.show_result) {
@@ -182,17 +174,40 @@ const Result = ({ token }) => {
               </div>
             </div>
           ) : (
-            <CircularProgress
-              color="inherit"
-              thickness={5}
-              size={60}
-              sx={{
-                position: "absolute",
-                left: "50%",
-                top: "50%",
-                transform: "translate(-50%, -50%)",
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+                height: "50vh",
               }}
-            />
+            >
+              <h1
+                style={{
+                  width: "800px",
+                  textAlign: "center",
+                }}
+              >
+                LOADING
+              </h1>
+              <div class="progress-bar">
+                <div class="progress-fill"></div>
+              </div>
+
+              <img src="" alt=""></img>
+            </div>
+            // <CircularProgress
+            //   color="inherit"
+            //   thickness={5}
+            //   size={60}
+            //   sx={{
+            //     position: "absolute",
+            //     left: "45%",
+            //     top: "45%",
+            //     transform: "translate(-50%, -50%)",
+            //   }}
+            // />
           )}
         </div>
       );
@@ -227,17 +242,40 @@ const Result = ({ token }) => {
               </div>
             </div>
           ) : (
-            <CircularProgress
-              color="inherit"
-              thickness={5}
-              size={60}
-              sx={{
-                position: "absolute",
-                left: "50%",
-                top: "80%",
-                transform: "translate(-50%, -50%)",
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+                height: "50vh",
               }}
-            />
+            >
+              <h1
+                style={{
+                  width: "800px",
+                  textAlign: "center",
+                }}
+              >
+                LOADING
+              </h1>
+              <div class="progress-bar">
+                <div class="progress-fill"></div>
+              </div>
+
+              <img src="" alt=""></img>
+            </div>
+            // <CircularProgress
+            //   color="inherit"
+            //   thickness={5}
+            //   size={60}
+            //   sx={{
+            //     position: "absolute",
+            //     left: "45%",
+            //     top: "45%",
+            //     transform: "translate(-50%, -50%)",
+            //   }}
+            // />
           )}
         </div>
       );

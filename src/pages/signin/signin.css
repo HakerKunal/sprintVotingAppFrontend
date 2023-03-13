@@ -1,35 +1,36 @@
-body{
-    background-color: #fffffb;
-
-
+body {
+  background-color: #fffffb;
 }
 
 .form2 {
-
-    width: 450px;
-    position: relative;
-    left: 35%;
-    top: 100px;
-    background-color: white;
-    height: 280px;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
-      rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-  }
-.signin--err--text{
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    left:207px;
-    width: 180px;
-    bottom: 10px;
-    font-size: 12px;
+  width: 450px;
+  position: relative;
+  left: 35%;
+  top: 100px;
+  background-color: white;
+  height: 280px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
 }
-.signin--err--text--invalid{
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    left:170px;
-    width: 180px;
+.signin--err--text {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  left: 207px;
+  width: 180px;
+  bottom: 10px;
+  font-size: 12px;
+}
+.signin--err--text--invalid {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  left: 170px;
+  width: 180px;
 
-    font-size: 14px;
+  font-size: 14px;
+}
+.form--remember-me {
+  position: relative;
+  left: 45%;
 }
