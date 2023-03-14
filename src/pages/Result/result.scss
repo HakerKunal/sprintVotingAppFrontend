@@ -2,7 +2,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  top: 100px;
+
   width: 90%;
   left: 5vw;
   background-color: white;
@@ -13,8 +13,8 @@
 }
 .result--heading {
   position: relative;
-  top: 117px;
-  left: 100px;
+  top: 17px;
+  left: 5vw;
   background-color: #fcde67;
   width: 200px;
   height: 30px;
@@ -311,6 +311,8 @@ td {
 }
 
 .result--outer {
+  position: relative;
+  top: 100px;
   opacity: 0;
   animation: pop-in 0.5s ease forwards;
 }
