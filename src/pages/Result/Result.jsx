@@ -211,7 +211,7 @@ const Result = ({ token }) => {
                 id="rssBlock"
                 style={{
                   position: "relative",
-                  top: "100px",
+                  top: "70px",
                   color: "red",
                 }}
               >
@@ -223,9 +223,11 @@ const Result = ({ token }) => {
                 </p>
               </div>
 
-              <h3 className="result--heading">Game</h3>
+              <h3 className="result--heading" style={{ top: 60 }}>
+                Game
+              </h3>
 
-              <div className="result--form">
+              <div className="result--form" style={{ top: 40 }}>
                 <Game sprint={sprintObj} />
               </div>
             </div>
