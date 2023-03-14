@@ -65,7 +65,7 @@ const Game = ({ sprint, token }) => {
   const [shouldDisableAllCards, setShouldDisableAllCards] = useState(false);
   const [moves, setMoves] = useState(0);
   const [showModal, setShowModal] = useState(false);
-  let localStorageKey="score"+sprint.id
+  let localStorageKey = "score" + sprint.id;
   const [bestScore, setBestScore] = useState(
     localStorage.getItem(localStorageKey)?.bestScore || Number.POSITIVE_INFINITY
   );
@@ -89,7 +89,6 @@ const Game = ({ sprint, token }) => {
       setShowModal(true);
       const highScore = Math.min(moves, bestScore);
       setBestScore(highScore);
-      
     }
   };
 
@@ -148,7 +147,7 @@ const Game = ({ sprint, token }) => {
     setCards(shuffleCards(uniqueCardsArray.concat(uniqueCardsArray)));
   };
   return (
-    <div>
+    <div className="result--outer">
       <header>
         <h3>Play the Memory Based Game</h3>
         <div>
@@ -175,7 +174,7 @@ const Game = ({ sprint, token }) => {
           <div className="moves">
             <span className="bold">Moves:</span> {moves}
           </div>
-          {localStorage.getItem("score"+sprint.id) && (
+          {localStorage.getItem("score" + sprint.id) && (
             <div className="high-score">
               <span className="bold">Best Score:</span> {bestScore}
             </div>

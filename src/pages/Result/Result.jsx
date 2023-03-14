@@ -120,7 +120,7 @@ const Result = ({ token }) => {
           <Header />
           <Menu />
           {resultData ? (
-            <div>
+            <div className="result--outer">
               <h3 className="result--heading">Result</h3>
               <div className="result--form">
                 {sprintObj.sprint_name ? (
@@ -197,17 +197,6 @@ const Result = ({ token }) => {
 
               <img src="" alt=""></img>
             </div>
-            // <CircularProgress
-            //   color="inherit"
-            //   thickness={5}
-            //   size={60}
-            //   sx={{
-            //     position: "absolute",
-            //     left: "45%",
-            //     top: "45%",
-            //     transform: "translate(-50%, -50%)",
-            //   }}
-            // />
           )}
         </div>
       );
@@ -223,7 +212,6 @@ const Result = ({ token }) => {
                 style={{
                   position: "relative",
                   top: "100px",
-
                   color: "red",
                 }}
               >
@@ -265,17 +253,6 @@ const Result = ({ token }) => {
 
               <img src="" alt=""></img>
             </div>
-            // <CircularProgress
-            //   color="inherit"
-            //   thickness={5}
-            //   size={60}
-            //   sx={{
-            //     position: "absolute",
-            //     left: "45%",
-            //     top: "45%",
-            //     transform: "translate(-50%, -50%)",
-            //   }}
-            // />
           )}
         </div>
       );
