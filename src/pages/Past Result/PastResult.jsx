@@ -46,11 +46,11 @@ const PastResult = ({ token }) => {
         setResultData(res.data);
       }
     );
-    getSpecialMentionResultData(JSON.parse(event.target.value).id)
-      .then((res) => {
+    getSpecialMentionResultData(JSON.parse(event.target.value).id).then(
+      (res) => {
         setSpecialMention(res.data.data);
-      })
-
+      }
+    );
   };
   const dataPoints = resultData ? resultData.vote_count : [{}];
 
@@ -70,52 +70,54 @@ const PastResult = ({ token }) => {
     <div>
       <Header />
       <Menu />
-      <h3 className="result--heading">Result</h3>
+      <div className="result--outer">
+        <h3 className="result--heading">Result</h3>
 
-      <div className="result--form">
-        <div className="select-box">
-          <h4 style={{ marginRight: 10 }}>Sprint Name </h4>
+        <div className="result--form">
+          <div className="select-box">
+            <h4 style={{ marginRight: 10 }}>Sprint Name </h4>
 
-          <select onChange={sprintChangeHandler} className="drop-down-sprint">
-            <option value={0}>Please Select One Sprint</option>
-            {listOfSprints.map((sprint) => {
-              if (!sprint?.is_active)
-                return (
-                  <option
-                    value={JSON.stringify(sprint)}
-                    label={sprint.sprint_name}
-                  >
-                    {sprint.sprint_name}
-                  </option>
-                );
-            })}
-          </select>
-        </div>
-        {selectSprint !== 0 && (
-          <>
-            <SprintDetailBox selectSprint={selectSprint} />
+            <select onChange={sprintChangeHandler} className="drop-down-sprint">
+              <option value={0}>Please Select One Sprint</option>
+              {listOfSprints.map((sprint) => {
+                if (!sprint?.is_active)
+                  return (
+                    <option
+                      value={JSON.stringify(sprint)}
+                      label={sprint.sprint_name}
+                    >
+                      {sprint.sprint_name}
+                    </option>
+                  );
+              })}
+            </select>
+          </div>
+          {selectSprint !== 0 && (
+            <>
+              <SprintDetailBox selectSprint={selectSprint} />
 
-            {resultData.vote_count && (
-              <div style={{ position: "relative", top: 150 }}>
-                <ExportExcelButton
-                  sprintObj={selectSprint}
-                  resultData={resultData}
+              {resultData.vote_count && (
+                <div style={{ position: "relative", top: 150 }}>
+                  <ExportExcelButton
+                    sprintObj={selectSprint}
+                    resultData={resultData}
+                  />
+                </div>
+              )}
+              <div className="result--graph--area">
+                <CanvasJSChart
+                  options={options}
+                  /* onRef={ref => this.chart = ref} */
                 />
               </div>
-            )}
-            <div className="result--graph--area">
-              <CanvasJSChart
-                options={options}
-                /* onRef={ref => this.chart = ref} */
+              <WinnerBox resultData={resultData} />
+              <VoteTable
+                resultData={resultData}
+                specialMention={specialMention}
               />
-            </div>
-            <WinnerBox resultData={resultData} />
-            <VoteTable
-              resultData={resultData}
-              specialMention={specialMention}
-            />
-          </>
-        )}
+            </>
+          )}
+        </div>
       </div>
     </div>
   );
