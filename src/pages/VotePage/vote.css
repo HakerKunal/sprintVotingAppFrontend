@@ -9,6 +9,9 @@
   height: 700px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
     rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  opacity: 0;
+  animation: pop-in 0.5s ease forwards;
+  padding-bottom: 50px;
 }
 
 .vote--innerform {
@@ -18,18 +21,20 @@
   margin-right: auto;
   width: 50%;
   padding: 20px;
-  border: 1px solid black;
 
   padding-bottom: 80px;
+
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  border-radius: 10px 10px 0px 0px;
+  border-radius: 10px 10px 10px 10px;
   padding-top: 10px;
   box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
     rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
     rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+  animation: slide-in-left 1s ease;
+  border: 2px solid black;
 }
 
 .vote--question {
@@ -81,4 +86,13 @@
 
 .vote--button:hover {
   background-color: #1e89a3;
+}
+
+@keyframes slide-in-left {
+  from {
+    transform: translateY(200%);
+  }
+  to {
+    transform: translateY(0);
+  }
 }

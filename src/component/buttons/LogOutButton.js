@@ -8,10 +8,10 @@ const LogOutButton = ({ logout }) => {
   const navigate = useNavigate();
   const navigateSignin = async () => {
     navigate("/signin");
-    await logout();
-    localStorage.removeItem('token');
+    logout();
+    localStorage.removeItem("token");
   };
-  
+
   return (
     <button className="signin--button" onClick={navigateSignin}>
       Logout

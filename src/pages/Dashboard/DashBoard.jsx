@@ -26,7 +26,6 @@ const Dashboard = ({ token, setSprintData }) => {
     getSprintData(axiosConfig)
       .then((res) => {
         let t = res.data.data.filter((sprint) => sprint.is_active === true);
-        console.log(t);
         setSprintObj({
           ...sprintObj,
           id: res.data.is_active[0].id,
@@ -105,12 +104,25 @@ const Dashboard = ({ token, setSprintData }) => {
           <div
             style={{
               display: "flex",
+              flexDirection: "column",
               justifyContent: "center",
-              position: "relative",
-              top: "200px",
+              alignItems: "center",
+              height: "50vh",
             }}
           >
-            <CircularProgress color="inherit" thickness={5} size={60} sx={{}} />
+            <h1
+              style={{
+                width: "800px",
+                textAlign: "center",
+              }}
+            >
+              LOADING
+            </h1>
+            <div class="progress-bar">
+              <div class="progress-fill"></div>
+            </div>
+
+            <img src="" alt=""></img>
           </div>
         )}
       </div>
