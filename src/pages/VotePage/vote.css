@@ -87,6 +87,10 @@
 .vote--button:hover {
   background-color: #1e89a3;
 }
+.vote--button:disabled {
+  background-color: gray; /* Change the color to your desired disabled color */
+  cursor: not-allowed; /* Show the 'not-allowed' cursor when disabled */
+}
 
 @keyframes slide-in-left {
   from {

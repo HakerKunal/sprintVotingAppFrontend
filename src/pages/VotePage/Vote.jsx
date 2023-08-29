@@ -28,6 +28,7 @@ const Vote = ({ token, sprintId }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isupdated, setUpdated] = useState(false);
   const [specialMention, setSpecialMention] = useState("");
+  const [error, setError] = useState({ special_mention: "" });
 
   const navigate = useNavigate();
 
@@ -96,9 +97,12 @@ const Vote = ({ token, sprintId }) => {
       setSpecialMention(JSON.parse(res.data.data).special_mention);
     });
   }, [sprintId]);
-  const options = userList.map((user) => {
-    return { value: user.id, label: user.name };
-  });
+  const options = userList
+    .filter((user) => user.is_active)
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .map((user) => {
+      return { value: user.id, label: user.name };
+    });
   const paramList = parameterList.map((param) => (
     <div className="vote--field">
       <label className="vote--answer">{param.parameter_name}</label>
@@ -190,11 +194,28 @@ const Vote = ({ token, sprintId }) => {
                   multiline
                   color="success"
                   placeholder="Special Mention"
-                  onChange={(event) => setSpecialMention(event.target.value)}
+                  onChange={(event) => {
+                    if (event.target.value.length > 1000) {
+                      setError({
+                        ...error,
+                        special_mention:
+                          "Special Mention text should be less than 1000 characters",
+                      });
+                    } else {
+                      setError({ ...error, special_mention: "" });
+                    }
+                    setSpecialMention(event.target.value);
+                  }}
+                  error={error?.special_mention}
+                  helperText={error?.special_mention}
                 />
               </AccordionDetails>
             </Accordion>
-            <button onClick={submitVotes} className="vote--button">
+            <button
+              onClick={submitVotes}
+              className="vote--button"
+              disabled={error?.special_mention !== ""}
+            >
               {isupdated ? <label>Update</label> : <label>Submit</label>}
             </button>
           </Box>
