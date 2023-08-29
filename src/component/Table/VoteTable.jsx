@@ -7,111 +7,114 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 const VoteTable = ({ resultData, specialMention }) => {
   let listOfVoteBy = [];
+
+  const sortedData =
+    resultData !== 0
+      ? [...resultData?.vote_details].sort((a, b) =>
+          a.vote_by.localeCompare(b.vote_by)
+        )
+      : [];
+
+  if (sortedData.lenght === 0) {
+    return <p>Not Voted Till Now</p>;
+  }
+
   return (
     <>
       <table>
-        <div
-          style={{
-            width: "69vw",
-            backgroundColor: "black",
-            color: "white",
-            height: "30px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            borderRadius: "10px 10px 10px 10px",
-            fontSize: "18px",
-          }}
-        >
-          Vote Details
-        </div>
-        <tr>
-          <th>S.No.</th>
-          <th>Vote By</th>
-          <th>Vote To</th>
-          <th>Parameter</th>
-        </tr>
-        {resultData ? (
-          resultData.vote_details
-            .sort((a, b) => a.vote_by.localeCompare(b.vote_by))
-            .map((val, key) => {
-              let changed = true;
-              let changed2 = false;
+        <thead>
+          <tr
+            colSpan={4}
+            style={{
+              width: "69vw",
+              backgroundColor: "black",
+              color: "white",
+              height: "30px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
 
-              if (!listOfVoteBy.includes(val.vote_by.toLowerCase())) {
-                listOfVoteBy.push(val.vote_by.toLowerCase());
-                if (listOfVoteBy.length > 1) {
-                  changed = false;
-                  changed2 = false;
-                }
-              } else {
-                listOfVoteBy.push(val.vote_by.toLowerCase());
-                changed = true;
-                changed2 = true;
-              }
+              fontSize: "18px",
+            }}
+          >
+            Vote Details
+          </tr>
 
-              return (
-                <>
-                  {changed ? (
-                    <></>
-                  ) : (
-                    <>
-                      <div class="blank_row" style={{ bottom: 1 }}></div>
-                    </>
-                  )}
-                  {changed2 ? (
-                    <></>
-                  ) : (
-                    specialMention.map((mention) => {
-                      if (
-                        val.vote_by.toLowerCase() ===
-                        mention.vote_by.toLowerCase()
-                      ) {
-                        return (
-                          <Accordion
-                            sx={{ position: "relative", top: 5 }}
-                            className="accordian_row"
-                            fullWidth
-                          >
-                            <AccordionSummary
-                              expandIcon={<ExpandMoreIcon />}
-                              aria-controls="panel1a-content"
-                              id="panel1a-header"
-                            >
-                              <Typography>Honourable Mention</Typography>
-                            </AccordionSummary>
-                            <AccordionDetails>
-                              <span
-                                style={{
-                                  border: "1px solid rgba(0,0,0,0.25)",
-                                  padding: "20px 10px ",
-                                  borderRadius: 7,
-                                  display: "block",
-                                  whiteSpace: "pre",
-                                }}
-                              >
-                                {mention.special_mentions}
-                              </span>
-                            </AccordionDetails>
-                          </Accordion>
-                        );
-                      }
-                    })
-                  )}
-                  <tr key={key}>
-                    <td>{key + 1}</td>
-                    <td>{val.vote_by}</td>
-                    <td>{val.vote_to}</td>
-                    <td>{val.parameter_name}</td>
+          <tr>
+            <th>S.No.</th>
+            <th>Vote By</th>
+            <th>Vote To</th>
+            <th>Parameter Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          {sortedData?.map((vote, index) => {
+            const isLastEntry = index === sortedData.length - 1;
+            const showSpecialMentions =
+              isLastEntry || vote.vote_by !== sortedData[index + 1].vote_by;
+            const specialMentionObj = specialMention.find(
+              (mention) =>
+                mention?.vote_by?.toLowerCase() === vote?.vote_by?.toLowerCase()
+            );
+
+            return (
+              <React.Fragment key={index}>
+                <tr>
+                  <td>{index + 1}</td>
+                  <td>{vote.vote_by}</td>
+                  <td>{vote.vote_to}</td>
+                  <td>{vote.parameter_name}</td>
+                </tr>
+                {showSpecialMentions && specialMentionObj && (
+                  <tr>
+                    <td colSpan="4">
+                      <SpecialMentions
+                        mentions={specialMentionObj.special_mentions}
+                      />
+                    </td>
                   </tr>
-                </>
-              );
-            })
-        ) : (
-          <p>Not Voted Till Now</p>
-        )}
+                )}
+                {!isLastEntry &&
+                  vote.vote_by !== sortedData[index + 1].vote_by && (
+                    <div class="blank_row" style={{ bottom: 1 }}></div>
+                  )}
+              </React.Fragment>
+            );
+          })}
+        </tbody>
       </table>
     </>
   );
 };
 export default VoteTable;
+const SpecialMentions = ({ mentions }) => {
+  return (
+    <Accordion
+      sx={{ position: "relative", top: 5 }}
+      className="accordian_row"
+      fullWidth
+    >
+      <AccordionSummary
+        expandIcon={<ExpandMoreIcon />}
+        aria-controls="panel1a-content"
+        id="panel1a-header"
+      >
+        <Typography>Honourable Mention</Typography>
+      </AccordionSummary>
+      <AccordionDetails>
+        <span
+          style={{
+            border: "1px solid rgba(0,0,0,0.25)",
+            padding: "20px 10px ",
+            borderRadius: 7,
+            display: "block",
+            whiteSpace: "pre",
+            textAlign: "left",
+          }}
+        >
+          {mentions}
+        </span>
+      </AccordionDetails>
+    </Accordion>
+  );
+};
